@@ -23,7 +23,7 @@ void swap(Num& a, Num& b)
 }
 
 template < typename Num >
-Num& max(const Num& a, const Num& b)
+const Num& max(const Num& a, const Num& b)
 {
 	if (a > b)
 		return (a);
@@ -31,7 +31,7 @@ Num& max(const Num& a, const Num& b)
 }
 
 template < typename Num >
-Num& min(const Num& a, const Num& b)
+const Num& min(const Num& a, const Num& b)
 {
 	if (a < b)
 		return (a);
