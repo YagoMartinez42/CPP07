@@ -54,5 +54,26 @@ int main()
 			std::cout << stringArray[i] << ", ";
 		std::cout << std::endl;
 	}
+	{
+		std::cout << std::endl;
+		std::cout << TSTH << "=========================================" << TSTR << std::endl;
+		std::cout << TSTH << "|        What happens by default?       |" << TSTR << std::endl;
+		std::cout << TSTH << "=========================================" << TSTR << std::endl;
+		Array<> nothingArray;
+
+		std::cout << "Array Size: " << nothingArray.size() << std::endl;
+		std::cout << "Array contents (looping throught size):" << std::endl;
+		for (unsigned int i = 0; i < nothingArray.size(); i++)
+			std::cout << nothingArray[i] << ", ";
+		try
+		{
+			std::cout << "Forcing to access element 0:" << std::endl;
+			std::cout << nothingArray[0] << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
 	return (0);
 }

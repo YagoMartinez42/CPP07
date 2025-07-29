@@ -17,7 +17,7 @@ template < typename T = long>
 class Array
 {
 	public:
-		Array() : len(0), items(new T[0]) {}
+		Array() : len(0), items(NULL) {}
 		Array(const unsigned int n) : len(n), items(new T[n]) {}
 		Array(const Array& orig) : len(orig.len), items(new T[orig.len])
 		{
@@ -45,7 +45,7 @@ class Array
 			}
 			return (*this);
 		}
-		T& operator[](unsigned int i)
+		T& operator[](unsigned int i) 
 		{
 			if (i < this->len)
 				return (this->items[i]);
