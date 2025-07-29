@@ -17,20 +17,22 @@ template < typename T = long>
 class Array
 {
 	public:
-		Array() : items(NULL), len(0) {}
-		Array(unsigned int n) : items(new T[n]), len(n) {}
-		Array(const Array& orig)
+		Array() : len(0), items(new T[0]) {}
+		Array(const unsigned int n) : len(n), items(new T[n]) {}
+		Array(const Array& orig) : len(orig.len), items(new T[orig.len])
 		{
-			this->len = orig.len;
-			this->items = new T[orig.len];
 			for (unsigned int i = 0; i < orig.len; i++)
 				this->items[i] = orig.items[i];
 		}
 		~Array()
 		{
-			delete (this->items);
+			if (this->items != NULL)
+			{
+				delete[] this->items;
+				this->items = NULL;
+			}
 		}
-		Array& Operator=(const Array& orig)
+		Array& operator=(const Array& orig)
 		{
 			if (this != &orig)
 			{
@@ -41,11 +43,22 @@ class Array
 				for (unsigned int i = 0; i < orig.len; i++)
 					this->items[i] = orig.items[i];
 			}
-			return (*this)
+			return (*this);
+		}
+		T& operator[](unsigned int i)
+		{
+			if (i < this->len)
+				return (this->items[i]);
+			else
+				throw (std::out_of_range("Index out of range"));
+		}
+		unsigned int size() const
+		{
+			return this->len;
 		}
 	private:
-		T items[];
 		unsigned int len;
+		T* items;
 };
 
 #endif

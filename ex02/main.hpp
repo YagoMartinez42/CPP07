@@ -24,22 +24,5 @@
 # endif
 
 # include <iostream>
-# include <fstream>
-
-template <typename AVar>
-void plusTwo(AVar &a)
-{
-	a += 2;
-}
-
-template <typename AVar>
-void toFile(AVar &a)
-{
-	std::ofstream aFile;
-
-	aFile.open ("fileout.txt", std::ios_base::app);
-	aFile << a << std::endl;
-	aFile.close();
-}
 
 #endif
